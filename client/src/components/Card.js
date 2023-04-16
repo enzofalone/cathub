@@ -22,7 +22,6 @@ const Card = (props) => {
   return (
     <div className="Card">
       <div className="card-content">
-        {" "}
         <h2 className="title">{props.title}</h2>
         <p className="description">{props.description}</p>
         <img style={{ width: "400px" }} alt="imagee" src={props.imageUrl} />
@@ -38,9 +37,7 @@ const Card = (props) => {
           <p>Created {props.createdAt}</p>
         </div>
       </div>
-      <Link to={"/" + props.id}>
-        <img className="moreButton" alt="edit button" src={more} />
-      </Link>
+      
     </div>
   );
 };
