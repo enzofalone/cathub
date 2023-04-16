@@ -6,9 +6,10 @@ import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import { Link } from "react-router-dom";
 import { supabase } from "./client";
+import ReadPost from "./pages/ReadPost";
+
 const App = () => {
-  const [posts, setPosts] = useState([
-  ]); 
+  const [posts, setPosts] = useState([]);
 
   // Sets up routes
   let element = useRoutes([
@@ -24,9 +25,13 @@ const App = () => {
       path: "/new",
       element: <CreatePost />,
     },
+    {
+      path: "/:id",
+      element: <ReadPost data={posts} />,
+    },
   ]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchData = async () => {
       const { data } = await supabase
         .from("Posts")
@@ -35,10 +40,10 @@ const App = () => {
 
       // set state of posts
       setPosts(data);
-      console.log("data",data);
+      console.log("data", data);
     };
     fetchData();
-  }, [])
+  }, []);
   return (
     <div className="App">
       <div className="header">

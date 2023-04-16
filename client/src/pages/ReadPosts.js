@@ -6,7 +6,7 @@ const ReadPosts = (props) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    
+    console.log(props.data) 
     setPosts(props.data);
   }, [props]);
 
@@ -20,6 +20,8 @@ const ReadPosts = (props) => {
             imageUrl={post.imageUrl}
             description={post.description}
             upvotes={post.upvotes}
+            createdAt={post.created_at}
+
           />
         ))
       ) : (

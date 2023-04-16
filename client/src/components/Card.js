@@ -15,8 +15,8 @@ const Card = (props) => {
       .update({ upvotes: parseInt(count) + 1 })
       .eq("id", props.id)
       .select();
-      console.log(resultUpvote.data)
-    setCount(resultUpvote.data[0].upvotes)
+    console.log(resultUpvote.data);
+    setCount(resultUpvote.data[0].upvotes);
   };
 
   return (
@@ -27,13 +27,18 @@ const Card = (props) => {
         <p className="description">{props.description}</p>
         <img style={{ width: "400px" }} alt="imagee" src={props.imageUrl} />
         <div className="upvote-wrapper">
-          <p style={{margin: "0 30px 0 0 "}}>{count || "0"} upvotes</p>
-          <button className="betButton" onClick={updateCount} style={{fontSize: 24, margin: 0, padding: 0}}>
+          <p style={{ margin: "0 30px 0 0 " }}>{count || "0"} upvotes</p>
+          <button
+            className="betButton"
+            onClick={updateCount}
+            style={{ fontSize: 24, margin: 0, padding: 0 }}
+          >
             {"👍"}
           </button>
+          <p>Created {props.createdAt}</p>
         </div>
       </div>
-      <Link to={"edit/" + props.id}>
+      <Link to={"/" + props.id}>
         <img className="moreButton" alt="edit button" src={more} />
       </Link>
     </div>
